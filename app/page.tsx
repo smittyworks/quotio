@@ -1,6 +1,7 @@
 import WaitlistForm from "@/components/WaitlistForm";
 import ThemeToggle from "@/components/ThemeToggle";
 import Logo from "@/components/Logo";
+import Image from "next/image";
 import {
   HeroBackground,
   FeaturesBackground,
@@ -29,28 +30,46 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative overflow-hidden px-6 py-20 md:py-32">
         <HeroBackground />
-        <div className="relative mx-auto max-w-4xl text-center">
-          <h1 className="text-4xl font-semibold text-text-primary md:text-5xl lg:text-6xl">
-            Create accurate quotes in minutes, not inbox threads.
-          </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-text-secondary md:text-xl">
-            Quotio helps service businesses capture project details, generate
-            clean quotes, and respond faster — without spreadsheets or
-            back-and-forth emails.
-          </p>
-          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <a
-              href="#waitlist"
-              className="rounded-lg bg-accent px-8 py-3 font-medium text-white transition-colors hover:bg-accent-hover"
-            >
-              Join the waitlist
-            </a>
-            <a
-              href="#how-it-works"
-              className="rounded-lg border border-border-light bg-surface px-8 py-3 font-medium text-text-primary transition-colors hover:bg-surface-alt"
-            >
-              See how it works
-            </a>
+        <div className="relative mx-auto max-w-7xl">
+          <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
+            {/* Text Content */}
+            <div className="text-center lg:text-left">
+              <h1 className="text-4xl font-semibold text-text-primary md:text-5xl lg:text-6xl">
+                Create accurate quotes in minutes, not inbox threads.
+              </h1>
+              <p className="mt-6 text-lg text-text-secondary md:text-xl">
+                Quotio helps service businesses capture project details, generate
+                clean quotes, and respond faster — without spreadsheets or
+                back-and-forth emails.
+              </p>
+              <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row lg:justify-start">
+                <a
+                  href="#waitlist"
+                  className="rounded-lg bg-accent px-8 py-3 font-medium text-white transition-colors hover:bg-accent-hover"
+                >
+                  Join the waitlist
+                </a>
+                <a
+                  href="#how-it-works"
+                  className="rounded-lg border border-border-light bg-surface px-8 py-3 font-medium text-text-primary transition-colors hover:bg-surface-alt"
+                >
+                  See how it works
+                </a>
+              </div>
+            </div>
+
+            {/* Hero Image */}
+            <div className="relative">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-border shadow-2xl">
+                <Image
+                  src="/hero.jpg"
+                  alt="Quotio platform interface"
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>
