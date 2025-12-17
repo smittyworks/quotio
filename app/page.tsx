@@ -1,5 +1,13 @@
 import WaitlistForm from "@/components/WaitlistForm";
 import ThemeToggle from "@/components/ThemeToggle";
+import Logo from "@/components/Logo";
+import {
+  HeroBackground,
+  FeaturesBackground,
+  WaitlistBackground,
+  HowItWorksBackground,
+  ProblemsBackground,
+} from "@/components/BackgroundPatterns";
 
 export default function Home() {
   return (
@@ -7,8 +15,11 @@ export default function Home() {
       {/* Header */}
       <header className="border-b border-border bg-surface">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-          <div className="flex items-center gap-2">
-            <span className="text-xl font-semibold text-text-primary">Quotio</span>
+          <div className="flex items-center gap-3">
+            <Logo className="h-12 w-12" />
+            <span className="text-xl font-semibold text-text-primary">
+              Quotio
+            </span>
             <span className="text-sm text-text-tertiary">Beta</span>
           </div>
           <ThemeToggle />
@@ -16,8 +27,9 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section className="px-6 py-20 md:py-32">
-        <div className="mx-auto max-w-4xl text-center">
+      <section className="relative overflow-hidden px-6 py-20 md:py-32">
+        <HeroBackground />
+        <div className="relative mx-auto max-w-4xl text-center">
           <h1 className="text-4xl font-semibold text-text-primary md:text-5xl lg:text-6xl">
             Create accurate quotes in minutes, not inbox threads.
           </h1>
@@ -44,8 +56,9 @@ export default function Home() {
       </section>
 
       {/* Problem → Solution Section */}
-      <section className="border-y border-border bg-surface px-6 py-20">
-        <div className="mx-auto max-w-4xl">
+      <section className="relative overflow-hidden border-y border-border bg-surface px-6 py-20">
+        <ProblemsBackground />
+        <div className="relative mx-auto max-w-4xl">
           <h2 className="text-center text-3xl font-semibold text-text-primary">
             Quoting shouldn't be this hard.
           </h2>
@@ -88,8 +101,9 @@ export default function Home() {
       </section>
 
       {/* Features Section */}
-      <section className="px-6 py-20">
-        <div className="mx-auto max-w-5xl">
+      <section className="relative overflow-hidden px-6 py-20">
+        <FeaturesBackground />
+        <div className="relative mx-auto max-w-5xl">
           <div className="grid gap-8 md:grid-cols-2">
             <div className="rounded-lg border border-border bg-surface p-8">
               <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-accent-light">
@@ -195,9 +209,10 @@ export default function Home() {
       {/* How It Works Section */}
       <section
         id="how-it-works"
-        className="border-y border-border bg-surface px-6 py-20"
+        className="relative overflow-hidden border-y border-border bg-surface px-6 py-20"
       >
-        <div className="mx-auto max-w-4xl">
+        <HowItWorksBackground />
+        <div className="relative mx-auto max-w-4xl">
           <h2 className="text-center text-3xl font-semibold text-text-primary">
             How it works
           </h2>
@@ -250,18 +265,21 @@ export default function Home() {
       {/* Waitlist Section */}
       <section id="waitlist" className="px-6 py-20">
         <div className="mx-auto max-w-xl">
-          <div className="rounded-2xl border border-border bg-surface p-8 md:p-12">
-            <h2 className="text-center text-3xl font-semibold text-text-primary">
-              Be the first to try Quotio
-            </h2>
-            <p className="mt-4 text-center text-text-secondary">
-              We're opening early access soon. Join the waitlist to get updates
-              and early access when we launch.
-            </p>
-            <WaitlistForm />
-            <p className="mt-4 text-center text-sm text-text-tertiary">
-              No spam. Unsubscribe anytime.
-            </p>
+          <div className="relative overflow-hidden rounded-2xl border border-border bg-surface p-8 md:p-12">
+            {/* <WaitlistBackground /> */}
+            <div className="relative">
+              <h2 className="text-center text-3xl font-semibold text-text-primary">
+                Be the first to try Quotio
+              </h2>
+              <p className="mt-4 text-center text-text-secondary">
+                We're opening early access soon. Join the waitlist to get
+                updates and early access when we launch.
+              </p>
+              <WaitlistForm />
+              <p className="mt-4 text-center text-sm text-text-tertiary">
+                No spam. Unsubscribe anytime.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -269,6 +287,9 @@ export default function Home() {
       {/* Footer */}
       <footer className="border-t border-border bg-surface px-6 py-12">
         <div className="mx-auto max-w-4xl text-center">
+          <div className="flex justify-center mb-4">
+            <Logo className="h-12 w-12" />
+          </div>
           <p className="text-lg font-semibold text-text-primary">Quotio</p>
           <p className="mt-2 text-sm text-text-tertiary">© 2025 Quotio</p>
           <p className="mt-4 text-xs text-text-tertiary">
