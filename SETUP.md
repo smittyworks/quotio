@@ -9,11 +9,11 @@
 
 ### Get Your Credentials
 1. Go to Project Settings > API
-2. Copy the `URL` and `anon/public` key
+2. Copy the `URL` and `Publishable (anon)` key
 3. Update `.env.local` with these values:
    ```
    NEXT_PUBLIC_SUPABASE_URL=your_project_url
-   NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_key
+   NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=your_publishable_key
    ```
 
 ### Create the Database Table
