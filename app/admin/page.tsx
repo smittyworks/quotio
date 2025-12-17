@@ -25,47 +25,47 @@ export default async function AdminPage() {
   const entries = await getWaitlistEntries();
 
   return (
-    <div className="min-h-screen bg-neutral-50 p-8">
+    <div className="min-h-screen bg-background p-8">
       <div className="mx-auto max-w-6xl">
         <div className="mb-8">
-          <h1 className="text-3xl font-semibold text-neutral-900">Waitlist Admin</h1>
-          <p className="mt-2 text-neutral-600">
+          <h1 className="text-3xl font-semibold text-text-primary">Waitlist Admin</h1>
+          <p className="mt-2 text-text-secondary">
             Total signups: <span className="font-semibold">{entries.length}</span>
           </p>
         </div>
 
-        <div className="overflow-hidden rounded-lg border border-neutral-200 bg-white shadow">
-          <table className="min-w-full divide-y divide-neutral-200">
-            <thead className="bg-neutral-50">
+        <div className="overflow-hidden rounded-lg border border-border bg-surface shadow">
+          <table className="min-w-full divide-y divide-border">
+            <thead className="bg-surface-alt">
               <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-neutral-500">
+                <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-text-tertiary">
                   Email
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-neutral-500">
+                <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-text-tertiary">
                   Company
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-neutral-500">
+                <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-text-tertiary">
                   Signed Up
                 </th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-neutral-200 bg-white">
+            <tbody className="divide-y divide-border bg-surface">
               {entries.length === 0 ? (
                 <tr>
-                  <td colSpan={3} className="px-6 py-8 text-center text-neutral-500">
+                  <td colSpan={3} className="px-6 py-8 text-center text-text-secondary">
                     No waitlist entries yet.
                   </td>
                 </tr>
               ) : (
                 entries.map((entry) => (
-                  <tr key={entry.id} className="hover:bg-neutral-50">
-                    <td className="whitespace-nowrap px-6 py-4 text-sm font-medium text-neutral-900">
+                  <tr key={entry.id} className="hover:bg-surface-alt">
+                    <td className="whitespace-nowrap px-6 py-4 text-sm font-medium text-text-primary">
                       {entry.email}
                     </td>
-                    <td className="whitespace-nowrap px-6 py-4 text-sm text-neutral-600">
+                    <td className="whitespace-nowrap px-6 py-4 text-sm text-text-secondary">
                       {entry.company || '—'}
                     </td>
-                    <td className="whitespace-nowrap px-6 py-4 text-sm text-neutral-600">
+                    <td className="whitespace-nowrap px-6 py-4 text-sm text-text-secondary">
                       {new Date(entry.created_at).toLocaleDateString('en-US', {
                         year: 'numeric',
                         month: 'short',
@@ -84,7 +84,7 @@ export default async function AdminPage() {
         <div className="mt-4 text-center">
           <a
             href="/"
-            className="text-sm text-indigo-600 hover:text-indigo-700"
+            className="text-sm text-accent hover:text-accent-hover"
           >
             ← Back to landing page
           </a>
