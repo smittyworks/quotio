@@ -1,4 +1,4 @@
-import { supabase } from '@/lib/supabase';
+import { sql } from '@/lib/db';
 
 interface WaitlistEntry {
   id: string;
@@ -8,17 +8,15 @@ interface WaitlistEntry {
 }
 
 async function getWaitlistEntries() {
-  const { data, error } = await supabase
-    .from('waitlist')
-    .select('*')
-    .order('created_at', { ascending: false });
-
-  if (error) {
+  try {
+    const rows = await sql`
+      SELECT * FROM waitlist ORDER BY created_at DESC
+    `;
+    return rows as WaitlistEntry[];
+  } catch (error) {
     console.error('Error fetching waitlist:', error);
     return [];
   }
-
-  return data as WaitlistEntry[];
 }
 
 export default async function AdminPage() {

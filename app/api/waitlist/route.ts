@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { supabase } from '@/lib/supabase';
+import { sql } from '@/lib/db';
 import { Resend } from 'resend';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
@@ -17,21 +17,23 @@ export async function POST(request: Request) {
       );
     }
 
-    // Insert into Supabase
-    const { data, error } = await supabase
-      .from('waitlist')
-      .insert([{ email, company: company || null }])
-      .select();
-
-    if (error) {
-      // Check if it's a duplicate email error
-      if (error.code === '23505') {
+    // Insert into Neon
+    let data;
+    try {
+      const rows = await sql`
+        INSERT INTO waitlist (email, company)
+        VALUES (${email}, ${company || null})
+        RETURNING *
+      `;
+      data = rows[0];
+    } catch (err: any) {
+      if (err?.code === '23505') {
         return NextResponse.json(
           { error: 'This email is already on the waitlist' },
           { status: 400 }
         );
       }
-      console.error('Supabase error:', error);
+      console.error('Database error:', err);
       return NextResponse.json(
         { error: 'Failed to join waitlist. Please try again.' },
         { status: 500 }
